@@ -1,0 +1,13 @@
+{
+  "name": "receiptor-ai",
+  "displayName": "Receiptor AI",
+  "version": "0.1.0",
+  "description": "Bookkeeping workflows for Cursor with Receiptor MCP access, approval-aware mutations, and operational skills for intake, cleanup, and spend analysis.",
+  "author": {
+    "name": "Receiptor AI",
+    "email": "info@receiptor.ai"
+  },
+  "license": "MIT",
+  "keywords": ["cursor", "plugin", "mcp", "bookkeeping", "receipts", "invoices", "accounting", "receiptor"],
+  "logo": "assets/logo.svg"
+}

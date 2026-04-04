@@ -1,0 +1,15 @@
+---
+description: Guide Cursor agents toward Receiptor MCP-first bookkeeping workflows with safe approval-aware mutations.
+alwaysApply: true
+---
+
+receiptor-workflows:
+
+- Use Receiptor MCP tools for live workspace data instead of guessing account state or document details.
+- Start bookkeeping work by checking `workspace_get_context`. If the server is disconnected or unauthorized, tell the user to connect Receiptor MCP in Cursor and complete OAuth.
+- If the user needs a different workspace, use `workspaces_list` to identify choices and `workspace_switch` to explain the required re-authorization flow.
+- Use `documents_search` to find candidate documents, then `documents_get` or `documents_inspect` for single-document detail.
+- Use `documents_count` for spend totals and grouped analysis. Do not approximate totals from a small search sample when aggregate tooling is available.
+- Use `documents_bulk_edit` in preview mode first. Only move to `dryRun: false` after the user confirms the change.
+- If a mutation returns `approval_required`, continue with `approvals_get`, `approvals_approve`, or `approvals_reject` instead of treating it as a failure.
+- For bookkeeping tasks, prefer the bundled skills `setup-readiness`, `receipt-intake`, `categorization-review`, and `spend-analysis`.
