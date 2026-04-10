@@ -34,3 +34,10 @@ The bundled MCP config is:
 ```
 
 After installing the plugin in Cursor, complete OAuth for the Receiptor MCP server and select the workspace you want to authorize.
+Use `workspace_get_context` to confirm the active workspace and `workspace_switch` if you need to change it later in the same MCP session.
+
+## Support and policy links
+
+- Docs: https://docs.receiptor.ai/api/mcp/introduction
+- Privacy: https://receiptor.ai/privacy
+- Support: https://receiptor.ai/support

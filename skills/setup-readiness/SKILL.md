@@ -10,7 +10,7 @@ Use this skill before operational bookkeeping work when the question is "is this
 ## Core MCP Flow
 
 1. Call `workspace_get_context` to confirm the authorized workspace.
-2. If the workspace is wrong or missing, use `workspaces_list` and then `workspace_switch` to explain that Cursor must re-authorize Receiptor MCP for the target workspace.
+2. If the workspace is wrong or missing, use `workspaces_list` and then `workspace_switch` to move the current MCP session to the target workspace.
 3. Call `integrations_list` with `category: "email"` to review intake sources.
 4. Call `integrations_list` with `category: "accounting"` to review downstream export targets.
 5. Call `rules_list` to see whether automation rules exist.
