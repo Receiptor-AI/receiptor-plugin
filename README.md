@@ -38,6 +38,8 @@ Use `workspace_get_context` to confirm the active workspace and `workspace_switc
 
 ## Support and policy links
 
-- Docs: https://docs.receiptor.ai/api/mcp/introduction
+- MCP docs: https://docs.receiptor.ai/api/mcp/introduction
+- CLI docs: https://docs.receiptor.ai/api/cli/introduction
 - Privacy: https://receiptor.ai/privacy
-- Support: https://receiptor.ai/support
+- Help center: https://help.receiptor.ai
+- Contact: info@receiptor.ai
