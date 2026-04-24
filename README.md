@@ -2,6 +2,8 @@
 
 Shared plugin package for Receiptor bookkeeping workflows in Codex and Cursor.
 
+Source repository: https://github.com/Receiptor-AI/receiptor-plugin
+
 ## Included
 
 - `.codex-plugin/plugin.json`: Codex plugin manifest

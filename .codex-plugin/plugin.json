@@ -8,6 +8,7 @@
     "url": "https://receiptor.ai"
   },
   "homepage": "https://docs.receiptor.ai/introduction",
+  "repository": "https://github.com/Receiptor-AI/receiptor-plugin",
   "license": "MIT",
   "keywords": [
     "codex",

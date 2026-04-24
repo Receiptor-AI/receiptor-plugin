@@ -7,6 +7,7 @@
     "name": "Receiptor AI",
     "email": "info@receiptor.ai"
   },
+  "homepage": "https://github.com/Receiptor-AI/receiptor-plugin",
   "license": "MIT",
   "keywords": ["cursor", "plugin", "mcp", "bookkeeping", "receipts", "invoices", "accounting", "receiptor"],
   "logo": "assets/logo.svg"
