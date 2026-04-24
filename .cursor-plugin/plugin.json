@@ -1,5 +1,5 @@
 {
-  "name": "receiptor-ai",
+  "name": "receiptor",
   "displayName": "Receiptor AI",
   "version": "0.1.0",
   "description": "Bookkeeping workflows for Cursor with Receiptor MCP access, approval-aware mutations, and operational skills for intake, cleanup, and spend analysis.",

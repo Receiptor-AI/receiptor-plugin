@@ -4,10 +4,17 @@ Shared plugin package for Receiptor bookkeeping workflows in Codex and Cursor.
 
 Source repository: https://github.com/Receiptor-AI/receiptor-plugin
 
+Install in Codex with:
+
+```bash
+codex plugin marketplace add Receiptor-AI/receiptor-plugin
+```
+
 ## Included
 
 - `.codex-plugin/plugin.json`: Codex plugin manifest
 - `.cursor-plugin/plugin.json`: Cursor plugin manifest
+- `.agents/plugins/marketplace.json`: standalone repo marketplace for Codex installs
 - repo root `.agents/plugins/marketplace.json`: local Codex marketplace entry
 - `mcp.json`: Receiptor MCP server config for `https://mcp.receiptor.ai`
 - `rules/receiptor-workflows.mdc`: default operating rules for approval-aware bookkeeping work

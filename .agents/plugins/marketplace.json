@@ -1,0 +1,20 @@
+{
+  "name": "receiptor-plugin",
+  "interface": {
+    "displayName": "Receiptor Plugins"
+  },
+  "plugins": [
+    {
+      "name": "receiptor",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
