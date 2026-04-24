@@ -1,6 +1,6 @@
 ---
 name: spend-analysis
-description: Analyze spending totals, grouped breakdowns, and financial patterns using Receiptor MCP in Cursor. Use this skill whenever the user asks about totals, category summaries, merchant breakdowns, or reporting-oriented spend analysis that should use full aggregate data instead of ad hoc document sampling.
+description: Analyze spending totals, grouped breakdowns, and financial patterns using Receiptor MCP. Use this skill whenever the user asks about totals, category summaries, merchant breakdowns, or reporting-oriented spend analysis that should use full aggregate data instead of ad hoc document sampling.
 ---
 
 # Spend Analysis

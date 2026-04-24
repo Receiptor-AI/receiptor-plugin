@@ -1,6 +1,6 @@
 ---
 name: receipt-intake
-description: Find and inspect receipts, invoices, and financial documents through Receiptor MCP in Cursor. Use this skill whenever the user wants to look up transactions, search by merchant or date, inspect extracted fields, review duplicate candidates, or check document-level export state before categorization, analysis, or close work.
+description: Find and inspect receipts, invoices, and financial documents through Receiptor MCP. Use this skill whenever the user wants to look up transactions, search by merchant or date, inspect extracted fields, review duplicate candidates, or check document-level export state before categorization, analysis, or close work.
 ---
 
 # Receipt Intake

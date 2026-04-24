@@ -1,9 +1,12 @@
-# Receiptor Cursor Plugin
+# Receiptor Codex and Cursor Plugin
 
-Cursor Marketplace plugin for Receiptor bookkeeping workflows.
+Shared plugin package for Receiptor bookkeeping workflows in Codex and Cursor.
 
 ## Included
 
+- `.codex-plugin/plugin.json`: Codex plugin manifest
+- `.cursor-plugin/plugin.json`: Cursor plugin manifest
+- repo root `.agents/plugins/marketplace.json`: local Codex marketplace entry
 - `mcp.json`: Receiptor MCP server config for `https://mcp.receiptor.ai`
 - `rules/receiptor-workflows.mdc`: default operating rules for approval-aware bookkeeping work
 - `skills/setup-readiness/`: verify OAuth, workspace context, integrations, rules, and export readiness
@@ -13,11 +16,11 @@ Cursor Marketplace plugin for Receiptor bookkeeping workflows.
 
 ## Design
 
-This plugin is intentionally MCP-first.
+This plugin is intentionally MCP-first and shares the same MCP + skill layer across both hosts.
 
 - Live operational data should come from Receiptor MCP tools, not hardcoded assumptions.
 - Mutations should preview first and follow Receiptor approval flow when execution requires it.
-- Skills are adapted from the Receiptor CLI workflow but rewritten for Cursor MCP usage.
+- Skills are adapted from the Receiptor CLI workflow for agent-driven MCP usage.
 
 ## MCP
 
@@ -33,7 +36,7 @@ The bundled MCP config is:
 }
 ```
 
-After installing the plugin in Cursor, complete OAuth for the Receiptor MCP server and select the workspace you want to authorize.
+After installing the plugin in Codex or Cursor, complete OAuth for the Receiptor MCP server and select the workspace you want to authorize.
 Use `workspace_get_context` to confirm the active workspace and `workspace_switch` if you need to change it later in the same MCP session.
 
 ## Support and policy links
