@@ -1,0 +1,25 @@
+{
+  "name": "receiptor",
+  "version": "0.1.0",
+  "description": "Bookkeeping workflows for Claude Code with Receiptor MCP access, approval-aware mutations, and operational skills for intake, cleanup, and spend analysis.",
+  "author": {
+    "name": "Receiptor AI",
+    "email": "info@receiptor.ai",
+    "url": "https://receiptor.ai"
+  },
+  "homepage": "https://docs.receiptor.ai/introduction",
+  "repository": "https://github.com/Receiptor-AI/receiptor-plugin",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "mcp",
+    "bookkeeping",
+    "receipts",
+    "invoices",
+    "accounting",
+    "receiptor"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
+}

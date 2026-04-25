@@ -1,8 +1,14 @@
-# Receiptor Codex and Cursor Plugin
+# Receiptor Claude Code, Codex, and Cursor Plugin
 
-Shared plugin package for Receiptor bookkeeping workflows in Codex and Cursor.
+Shared plugin package for Receiptor bookkeeping workflows in Claude Code, Codex, and Cursor.
 
 Source repository: https://github.com/Receiptor-AI/receiptor-plugin
+
+Test locally in Claude Code with:
+
+```bash
+claude --plugin-dir .
+```
 
 Install in Codex with:
 
@@ -12,10 +18,10 @@ codex plugin marketplace add Receiptor-AI/receiptor-plugin
 
 ## Included
 
+- `.claude-plugin/plugin.json`: Claude Code plugin manifest
 - `.codex-plugin/plugin.json`: Codex plugin manifest
 - `.cursor-plugin/plugin.json`: Cursor plugin manifest
-- `.agents/plugins/marketplace.json`: standalone repo marketplace for Codex installs
-- repo root `.agents/plugins/marketplace.json`: local Codex marketplace entry
+- `.agents/plugins/marketplace.json`: standalone Codex marketplace for installs from this public plugin
 - `mcp.json`: Receiptor MCP server config for `https://mcp.receiptor.ai`
 - `rules/receiptor-workflows.mdc`: default operating rules for approval-aware bookkeeping work
 - `skills/setup-readiness/`: verify OAuth, workspace context, integrations, rules, and export readiness
