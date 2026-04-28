@@ -1,5 +1,7 @@
 # Receiptor Claude Code, Codex, and Cursor Plugin
 
+[![smithery badge](https://smithery.ai/badge/receiptor-ai/receiptor-mcp)](https://smithery.ai/servers/receiptor-ai/receiptor-mcp)
+
 Shared plugin package for Receiptor bookkeeping workflows in Claude Code, Codex, and Cursor.
 
 Source repository: https://github.com/Receiptor-AI/receiptor-plugin
