@@ -26,7 +26,7 @@ codex plugin marketplace add Receiptor-AI/receiptor-plugin
 - `.agents/plugins/marketplace.json`: standalone Codex marketplace for installs from this public plugin
 - `mcp.json`: Receiptor MCP server config for `https://mcp.receiptor.ai`
 - `rules/receiptor-workflows.mdc`: default operating rules for approval-aware bookkeeping work
-- `skills/workspace-readiness/`: verify OAuth, workspace context, integrations, rules, and export readiness
+- `references/workspace-checks.md`: shared task-specific workspace checks, read by every bundled skill
 - `skills/document-review/`: search and inspect receipts and invoices
 - `skills/categorization-review/`: preview and approve bulk categorization changes
 - `skills/document-analysis/`: analyze document counts, recorded totals, and grouped breakdowns
@@ -36,11 +36,12 @@ The month-end skill is prepared for private testing. Its complete review workflo
 
 ## Design
 
-This plugin is intentionally MCP-first and shares the same MCP + skill layer across both hosts.
+This plugin is intentionally MCP-first and shares the same MCP + skill layer across supported hosts.
 
 - Live operational data should come from Receiptor MCP tools, not hardcoded assumptions.
 - Mutations should preview first and follow Receiptor approval flow when execution requires it.
 - Skills are adapted from the Receiptor CLI workflow for agent-driven MCP usage.
+- Every bundled skill checks workspace access and the prerequisites relevant to its task. Existing MCP tools, including `workspace_get_context`, `context_readiness`, `sources_email_list` and `integrations_list`, remain available without a standalone readiness skill. Other MCP clients can use these tools too; plugin instructions must be separately made available in hosts that do not load this bundle.
 
 ## MCP
 

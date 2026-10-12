@@ -8,8 +8,9 @@ receiptor-workflows:
 - Use Receiptor MCP tools for live workspace data instead of guessing account state or document details.
 - Start bookkeeping work by checking `workspace_get_context`. If the server is disconnected or unauthorized, tell the user to connect Receiptor MCP in Cursor and complete OAuth.
 - If the user needs a different workspace, use `workspaces_list` to identify choices and `workspace_switch` to update the active MCP session workspace.
+- Apply the task-specific checks in `references/workspace-checks.md` before the selected skill. Use `context_readiness` for categorization context and `sources_email_list` with `includeInactive: true` for collection coverage. Missing accounting integrations or automation rules do not block reviewing existing documents or preparing a draft pack.
 - Use `documents_search` to find candidate documents, then `documents_get` or `documents_inspect` for single-document detail.
 - Use `documents_count` for full-population counts and recorded totals. These totals may use preferred-currency conversion and count both sides of linked invoice/receipt pairs; establish purchase and currency treatment before describing them as spending. Do not extrapolate from a small search sample.
 - Use `documents_bulk_edit` in preview mode first. Only move to `dryRun: false` after the user confirms the change.
 - If a mutation returns `approval_required`, continue with `approvals_get`, `approvals_approve`, or `approvals_reject` instead of treating it as a failure.
-- For bookkeeping tasks, prefer the bundled skills `workspace-readiness`, `document-review`, `categorization-review`, `document-analysis`, and `month-end-document-pack`.
+- For bookkeeping tasks, prefer the bundled skills `document-review`, `categorization-review`, `document-analysis`, and `month-end-document-pack`.

@@ -7,6 +7,10 @@ description: Find and inspect receipts, invoices, and financial documents throug
 
 Use this skill to find and inspect documents already captured by Receiptor.
 
+## Before starting
+
+Read [workspace checks](../../references/workspace-checks.md) and apply the access, scope and document-review checks. Check source health only when collection coverage is relevant.
+
 ## Core MCP Flow
 
 1. Call `documents_search` with the user's query and the narrowest practical filters.

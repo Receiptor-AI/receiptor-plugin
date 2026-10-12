@@ -7,6 +7,10 @@ description: Analyze document counts, recorded totals, and grouped breakdowns th
 
 Use `documents_count` for aggregate reporting.
 
+## Before starting
+
+Read [workspace checks](../../references/workspace-checks.md) and apply the access, scope and document-analysis checks. Disclose coverage or tool limitations affecting the requested totals.
+
 ## Core MCP Flow
 
 1. Call `documents_count` with the narrowest possible filter set.

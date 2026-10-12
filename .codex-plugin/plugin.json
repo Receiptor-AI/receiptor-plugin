@@ -1,7 +1,7 @@
 {
   "name": "receiptor",
   "version": "0.1.0",
-  "description": "Bookkeeping workflows for Codex with Receiptor MCP access, workspace readiness, document review and analysis, categorization review, and draft month-end document packs.",
+  "description": "Bookkeeping workflows for Codex with Receiptor MCP access, task-specific workspace checks, document review and analysis, categorization review, and draft month-end document packs.",
   "author": {
     "name": "Receiptor AI",
     "email": "info@receiptor.ai",
@@ -25,7 +25,7 @@
   "interface": {
     "displayName": "Receiptor AI",
     "shortDescription": "Review financial documents and prepare draft month-end document packs.",
-    "longDescription": "Use Receiptor AI inside Codex to check workspace readiness, inspect receipts and invoices, review categorization, analyze document totals, and prepare draft month-end document packs with live MCP data.",
+    "longDescription": "Use Receiptor AI inside Codex to check workspace access and context, inspect receipts and invoices, review categorization, analyze document totals, and prepare draft month-end document packs with live MCP data.",
     "developerName": "Receiptor AI",
     "category": "Productivity",
     "capabilities": [
