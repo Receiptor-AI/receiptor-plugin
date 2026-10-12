@@ -1,6 +1,6 @@
 ---
 name: categorization-review
-description: Review and fix categorization quality across receipts and invoices using Receiptor MCP. Use this skill when the user wants to recategorize expenses, normalize merchant names, apply category fixes in bulk, or clean up classification issues across multiple documents.
+description: Check expense categories and supplier names on receipts and invoices in Receiptor AI. Use to answer category questions, suggest corrections, or fix several documents together. Show proposed changes for approval before applying them.
 ---
 
 # Categorization Review

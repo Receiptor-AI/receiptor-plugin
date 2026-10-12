@@ -1,51 +1,85 @@
-# Receiptor Claude Code, Codex, and Cursor Plugin
+# Receiptor AI
 
-[![smithery badge](https://smithery.ai/badge/receiptor-ai/receiptor-mcp)](https://smithery.ai/servers/receiptor-ai/receiptor-mcp)
+Get your receipts and invoices ready for your accountant. Find documents, check expense categories, and prepare a draft monthly pack for review.
 
-Shared plugin package for Receiptor bookkeeping workflows in Claude Code, Codex, and Cursor.
+Receiptor AI collects and organizes receipts and invoices from connected email accounts, WhatsApp, and uploads. This plugin lets you work with those saved documents in Claude, Codex, or Cursor.
+
+Ask for what you need in your own words. Your assistant helps you find documents, check unclear details, and prepare files to hand over, with less searching and sorting by hand.
+
+## What you can do
+
+| Task | How it helps |
+| --- | --- |
+| Find and check documents | Look up a receipt or invoice by supplier or date. Check its amount, details, possible duplicates, or whether it was sent to accounting software. |
+| Review expense categories | Check how documents are categorized and preview corrections before approving changes. |
+| Summarize your documents | See document counts and totals by supplier, category, or month. Your assistant explains limits that affect the totals. |
+| Prepare a monthly document pack | Gather a draft spreadsheet, available original files, and questions for your accountant to review. |
+
+## What is in a monthly pack?
+
+- **A spreadsheet** listing the month's documents, totals by currency, and items that need review.
+- **A ZIP of available original files**, such as receipts and invoices.
+- **A file checklist** showing what was included and which originals could not be retrieved.
+- **A handoff note** explaining the scope, gaps, and decisions still needed.
+
+The pack covers documents saved in Receiptor. Your assistant checks for disconnected inboxes and other known gaps, and reports what it could not verify. You or your accountant review the draft and make the accounting decisions.
+
+The monthly pack is currently in testing. Creating its files requires an assistant that can build spreadsheets and download files. Preparing documents is one part of month-end bookkeeping; bank reconciliation and completing the books remain separate tasks.
+
+## Get started
+
+1. Install the plugin in your AI assistant.
+2. Connect your Receiptor AI account and choose the workspace you want to use.
+3. Ask for the task you need. For example:
+
+> Prepare September's document pack for my accountant to review.
+
+> Find my receipts from a supplier and check their dates and amounts.
+
+> Check this supplier's expense categories and show me any suggested changes.
+
+> Show this month's document totals by supplier, with each currency separate.
+
+Preparing a pack reads your existing records. Changes to records, saved business guidance, accounting exports, and sharing require your permission and any approvals Receiptor requires.
+
+## Your data
+
+Your assistant connects to Receiptor's server at `https://mcp.receiptor.ai` using the account and workspace you authorize. This connection uses MCP, the standard AI assistants use to work with other services, and OAuth for sign-in.
+
+When you ask for a task, the assistant sends Receiptor the details needed to carry it out. These may include search terms, document IDs, dates, business filters, information you provide, and proposed changes.
+
+Receiptor returns data from your authorized workspace. This may include receipt and invoice details, connected email addresses and inbox status, expense categories, review questions, accounting export status, saved business guidance, and links to original files. Your assistant processes these responses under its provider's data-handling terms.
+
+To build a pack, your assistant downloads originals from the file-storage links Receiptor provides and creates files in its own file environment. These files can contain financial and personal information. You decide whether to share them with your accountant.
+
+The plugin contains instructions and connection settings. It has no bundled programs, automatic scripts, or separate analytics. See [Receiptor's privacy policy](https://receiptor.ai/privacy) for how Receiptor handles your data.
+
+## Help and support
+
+- [Help center](https://help.receiptor.ai)
+- [Connection documentation](https://docs.receiptor.ai/api/mcp/introduction)
+- [Privacy policy](https://receiptor.ai/privacy)
+- [Terms of service](https://receiptor.ai/terms)
+- Contact: info@receiptor.ai
+
+<details>
+<summary>Technical setup and plugin files</summary>
 
 Source repository: https://github.com/Receiptor-AI/receiptor-plugin
 
-Test locally in Claude Code with:
+Test locally in Claude Code:
 
 ```bash
 claude --plugin-dir .
 ```
 
-Install in Codex with:
+Add the plugin marketplace in Codex:
 
 ```bash
 codex plugin marketplace add Receiptor-AI/receiptor-plugin
 ```
 
-## Included
-
-- `.claude-plugin/plugin.json`: Claude Code plugin manifest
-- `.codex-plugin/plugin.json`: Codex plugin manifest
-- `.cursor-plugin/plugin.json`: Cursor plugin manifest
-- `.agents/plugins/marketplace.json`: standalone Codex marketplace for installs from this plugin
-- `mcp.json`: Receiptor MCP server config for `https://mcp.receiptor.ai`
-- `rules/receiptor-workflows.mdc`: default operating rules for approval-aware bookkeeping work
-- `references/workspace-checks.md`: shared task-specific workspace checks, read by every bundled skill
-- `skills/document-review/`: search and inspect receipts and invoices
-- `skills/categorization-review/`: preview and approve bulk categorization changes
-- `skills/document-analysis/`: analyze document counts, recorded totals, and grouped breakdowns
-- `skills/month-end-document-pack/`: prepare a draft accountant-review workbook, available originals, file manifest and handoff note
-
-The month-end skill is prepared for private testing. Its complete review workflow requires the backend release with filter-only pagination, canonical review filtering/detail, null-date filters and `documents_respond_review`. Check the connected server's schemas before testing; these source changes do not themselves deploy MCP. Pack preparation is read-only by default. Test the installed plugin on two representative periods before public promotion.
-
-## Design
-
-This plugin is intentionally MCP-first and shares the same MCP + skill layer across supported hosts.
-
-- Live operational data should come from Receiptor MCP tools, not hardcoded assumptions.
-- Mutations should preview first and follow Receiptor approval flow when execution requires it.
-- Skills are adapted from the Receiptor CLI workflow for agent-driven MCP usage.
-- Every bundled skill checks workspace access and the prerequisites relevant to its task. Existing MCP tools, including `workspace_get_context`, `context_readiness`, `sources_email_list` and `integrations_list`, remain available without a standalone readiness skill. Other MCP clients can use these tools too; plugin instructions must be separately made available in hosts that do not load this bundle.
-
-## MCP
-
-The bundled MCP config is:
+The package includes Claude, Codex, and Cursor manifests, four skills, shared workspace checks, and Cursor operating rules. The Claude and Codex manifests explicitly reference the shared `mcp.json` connection configuration:
 
 ```json
 {
@@ -58,21 +92,10 @@ The bundled MCP config is:
 }
 ```
 
-After installing the plugin in Codex or Cursor, complete OAuth for the Receiptor MCP server and select the workspace you want to authorize.
-Use `workspace_get_context` to confirm the active workspace and `workspace_switch` if you need to change it later in the same MCP session.
+Complete OAuth after installation. Confirm the active workspace with `workspace_get_context`; use `workspaces_list` and `workspace_switch` to change it.
 
-## Data handling
+Each skill reads `references/workspace-checks.md` for the checks its task needs. Tools such as `context_readiness`, `sources_email_list`, and `integrations_list` remain available to other MCP clients. Clients that do not load this plugin need the skill instructions supplied separately.
 
-The plugin contains instructions and configuration; it does not bundle executable scripts, hooks, package launchers, or its own analytics. It connects the host to Receiptor's remote MCP server at `https://mcp.receiptor.ai` using OAuth and the workspace you authorize.
+The skills are `document-review`, `categorization-review`, `document-analysis`, and `month-end-document-pack`. They use live Receiptor data and preserve the service's authorization and approval requirements.
 
-When the host calls a tool, it sends the tool arguments to Receiptor. Depending on the task, these can include document IDs, search terms, period/entity filters, proposed field changes, and business context you provide. Receiptor returns authorized workspace data, which can include receipt and invoice fields, source email addresses and monitoring status, categorization context, review evidence, export state, and original-file links. The host processes those responses under its own data-handling terms; see [Receiptor's privacy policy](https://receiptor.ai/privacy) for the service's handling of your data.
-
-To prepare a document pack, the host may download originals from the storage URLs Receiptor returns and create a workbook, ZIP, manifest, and handoff note in the host's file environment. Those outputs can contain financial and personal information. This preparation does not require sending files to an accountant or posting records to an accounting service. Document changes, context responses, saved memories, accounting exports, and sharing require the user's authorization and any applicable Receiptor approval flow.
-
-## Support and policy links
-
-- MCP docs: https://docs.receiptor.ai/api/mcp/introduction
-- CLI docs: https://docs.receiptor.ai/api/cli/introduction
-- Privacy: https://receiptor.ai/privacy
-- Help center: https://help.receiptor.ai
-- Contact: info@receiptor.ai
+</details>

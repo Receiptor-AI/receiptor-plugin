@@ -1,6 +1,6 @@
 ---
 name: document-analysis
-description: Analyze document counts, recorded totals, and grouped breakdowns through Receiptor MCP. Use when the user asks for category or merchant summaries, period totals, or patterns across captured receipts and invoices. Distinguish document totals from verified spending and use the full matching population rather than a search sample.
+description: Summarize the receipts and invoices saved in Receiptor AI, with counts and totals by supplier, expense category, or date. Use for monthly summaries and comparisons. Document totals need review before they can be treated as confirmed spending.
 ---
 
 # Document analysis

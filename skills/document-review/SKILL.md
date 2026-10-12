@@ -1,6 +1,6 @@
 ---
 name: document-review
-description: Find and inspect receipts, invoices, and financial documents through Receiptor MCP. Use this skill whenever the user wants to look up transactions, search by merchant or date, inspect extracted fields, review duplicate candidates, or check document-level export state before categorization, analysis, or close work.
+description: Find receipts and invoices in Receiptor AI and check their details. Use when searching by supplier or date, checking amounts, investigating possible duplicates, or checking whether a document was sent to accounting software.
 ---
 
 # Document review

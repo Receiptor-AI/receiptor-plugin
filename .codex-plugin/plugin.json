@@ -1,7 +1,7 @@
 {
   "name": "receiptor",
   "version": "0.1.0",
-  "description": "Bookkeeping workflows for Codex with Receiptor MCP access, task-specific workspace checks, document review and analysis, categorization review, and draft month-end document packs.",
+  "description": "Get your receipts and invoices ready for your accountant. Find documents, check expense categories, and prepare a draft monthly pack for review.",
   "author": {
     "name": "Receiptor AI",
     "email": "info@receiptor.ai",
@@ -12,20 +12,20 @@
   "license": "MIT",
   "keywords": [
     "codex",
-    "plugin",
-    "mcp",
     "bookkeeping",
     "receipts",
     "invoices",
     "accounting",
+    "expense-categories",
+    "month-end",
     "receiptor"
   ],
   "skills": "./skills/",
   "mcpServers": "./mcp.json",
   "interface": {
     "displayName": "Receiptor AI",
-    "shortDescription": "Review financial documents and prepare draft month-end document packs.",
-    "longDescription": "Use Receiptor AI inside Codex to check workspace access and context, inspect receipts and invoices, review categorization, analyze document totals, and prepare draft month-end document packs with live MCP data.",
+    "shortDescription": "Find receipts, check expense categories, and prepare monthly document packs.",
+    "longDescription": "Use the receipts and invoices in your Receiptor AI account to check document details, review expense categories, and see totals by supplier or month. Prepare a draft pack with a spreadsheet, available original files, and a note explaining what needs your accountant's review.",
     "developerName": "Receiptor AI",
     "category": "Productivity",
     "capabilities": [
@@ -36,9 +36,9 @@
     "privacyPolicyURL": "https://receiptor.ai/privacy",
     "termsOfServiceURL": "https://receiptor.ai/terms",
     "defaultPrompt": [
-      "Check whether this Receiptor workspace is ready for bookkeeping work.",
-      "Find receipts from a vendor and inspect the extracted fields.",
-      "Preview category cleanup for this merchant before applying changes."
+      "Prepare last month's document pack for my accountant to review.",
+      "Find my receipts from a supplier and check their dates and amounts.",
+      "Check this supplier's expense categories and show me any suggested changes."
     ],
     "brandColor": "#10B981",
     "composerIcon": "./assets/logo.svg",

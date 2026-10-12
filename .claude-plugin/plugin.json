@@ -1,7 +1,8 @@
 {
   "name": "receiptor",
+  "displayName": "Receiptor AI",
   "version": "0.1.0",
-  "description": "Bookkeeping workflows for Claude Code with Receiptor MCP access, task-specific workspace checks, document review and analysis, categorization review, and draft month-end document packs.",
+  "description": "Get your receipts and invoices ready for your accountant. Find documents, check expense categories, and prepare a draft monthly pack for review.",
   "author": {
     "name": "Receiptor AI",
     "email": "info@receiptor.ai",
@@ -16,13 +17,13 @@
   "repository": "https://github.com/Receiptor-AI/receiptor-plugin",
   "license": "MIT",
   "keywords": [
-    "claude-code",
-    "plugin",
-    "mcp",
+    "claude",
     "bookkeeping",
     "receipts",
     "invoices",
     "accounting",
+    "expense-categories",
+    "month-end",
     "receiptor"
   ],
   "skills": "./skills/",

@@ -1,6 +1,6 @@
 ---
 name: month-end-document-pack
-description: Prepare a draft month-end document pack from a Receiptor workspace, with an accountant-review workbook, available originals, a file manifest and a handoff note. Use for monthly document preparation and reviewing outstanding document questions; this does not perform a bank reconciliation or complete an accounting close.
+description: Prepare a draft monthly document pack for your accountant using receipts and invoices saved in Receiptor AI. Include a spreadsheet, available original files, a file checklist, and a note explaining questions to review. Use for month-end document preparation; this does not reconcile bank accounts or finish the books.
 ---
 
 # Month-end document pack
