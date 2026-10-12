@@ -2,7 +2,7 @@
   "name": "receiptor",
   "displayName": "Receiptor AI",
   "version": "0.1.0",
-  "description": "Bookkeeping workflows for Cursor with Receiptor MCP access, approval-aware mutations, and operational skills for intake, cleanup, and spend analysis.",
+  "description": "Bookkeeping workflows for Cursor with Receiptor MCP access, workspace readiness, document review and analysis, categorization review, and draft month-end document packs.",
   "author": {
     "name": "Receiptor AI",
     "email": "info@receiptor.ai"

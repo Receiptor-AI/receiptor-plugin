@@ -1,9 +1,9 @@
 ---
-name: setup-readiness
+name: workspace-readiness
 description: Review whether a Receiptor workspace is actually ready for bookkeeping work through Receiptor MCP. Use this skill whenever the user wants to confirm OAuth and workspace context, inspect connected integrations, verify monitored intake sources, review automation and export readiness, or identify setup gaps before intake, close, or tax-prep work.
 ---
 
-# Setup Readiness
+# Workspace readiness
 
 Use this skill before operational bookkeeping work when the question is "is this workspace ready?" rather than "where is this document?"
 

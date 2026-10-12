@@ -12,4 +12,4 @@ receiptor-workflows:
 - Use `documents_count` for full-population counts and recorded totals. These totals may use preferred-currency conversion and count both sides of linked invoice/receipt pairs; establish purchase and currency treatment before describing them as spending. Do not extrapolate from a small search sample.
 - Use `documents_bulk_edit` in preview mode first. Only move to `dryRun: false` after the user confirms the change.
 - If a mutation returns `approval_required`, continue with `approvals_get`, `approvals_approve`, or `approvals_reject` instead of treating it as a failure.
-- For bookkeeping tasks, prefer the bundled skills `setup-readiness`, `receipt-intake`, `categorization-review`, `spend-analysis`, and `month-end-document-pack`.
+- For bookkeeping tasks, prefer the bundled skills `workspace-readiness`, `document-review`, `categorization-review`, `document-analysis`, and `month-end-document-pack`.

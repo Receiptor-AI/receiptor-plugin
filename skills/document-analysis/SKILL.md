@@ -1,9 +1,9 @@
 ---
-name: spend-analysis
-description: Analyze spending totals, grouped breakdowns, and financial patterns using Receiptor MCP. Use this skill whenever the user asks about totals, category summaries, merchant breakdowns, or reporting-oriented spend analysis that should use full aggregate data instead of ad hoc document sampling.
+name: document-analysis
+description: Analyze document counts, recorded totals, and grouped breakdowns through Receiptor MCP. Use when the user asks for category or merchant summaries, period totals, or patterns across captured receipts and invoices. Distinguish document totals from verified spending and use the full matching population rather than a search sample.
 ---
 
-# Spend Analysis
+# Document analysis
 
 Use `documents_count` for aggregate reporting.
 

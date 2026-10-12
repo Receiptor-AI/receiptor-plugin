@@ -1,11 +1,11 @@
 ---
-name: receipt-intake
+name: document-review
 description: Find and inspect receipts, invoices, and financial documents through Receiptor MCP. Use this skill whenever the user wants to look up transactions, search by merchant or date, inspect extracted fields, review duplicate candidates, or check document-level export state before categorization, analysis, or close work.
 ---
 
-# Receipt Intake
+# Document review
 
-Use this skill for document-level investigation and intake review.
+Use this skill to find and inspect documents already captured by Receiptor.
 
 ## Core MCP Flow
 
