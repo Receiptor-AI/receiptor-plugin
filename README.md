@@ -23,7 +23,7 @@ codex plugin marketplace add Receiptor-AI/receiptor-plugin
 - `.claude-plugin/plugin.json`: Claude Code plugin manifest
 - `.codex-plugin/plugin.json`: Codex plugin manifest
 - `.cursor-plugin/plugin.json`: Cursor plugin manifest
-- `.agents/plugins/marketplace.json`: standalone Codex marketplace for installs from this public plugin
+- `.agents/plugins/marketplace.json`: standalone Codex marketplace for installs from this plugin
 - `mcp.json`: Receiptor MCP server config for `https://mcp.receiptor.ai`
 - `rules/receiptor-workflows.mdc`: default operating rules for approval-aware bookkeeping work
 - `references/workspace-checks.md`: shared task-specific workspace checks, read by every bundled skill
@@ -60,6 +60,14 @@ The bundled MCP config is:
 
 After installing the plugin in Codex or Cursor, complete OAuth for the Receiptor MCP server and select the workspace you want to authorize.
 Use `workspace_get_context` to confirm the active workspace and `workspace_switch` if you need to change it later in the same MCP session.
+
+## Data handling
+
+The plugin contains instructions and configuration; it does not bundle executable scripts, hooks, package launchers, or its own analytics. It connects the host to Receiptor's remote MCP server at `https://mcp.receiptor.ai` using OAuth and the workspace you authorize.
+
+When the host calls a tool, it sends the tool arguments to Receiptor. Depending on the task, these can include document IDs, search terms, period/entity filters, proposed field changes, and business context you provide. Receiptor returns authorized workspace data, which can include receipt and invoice fields, source email addresses and monitoring status, categorization context, review evidence, export state, and original-file links. The host processes those responses under its own data-handling terms; see [Receiptor's privacy policy](https://receiptor.ai/privacy) for the service's handling of your data.
+
+To prepare a document pack, the host may download originals from the storage URLs Receiptor returns and create a workbook, ZIP, manifest, and handoff note in the host's file environment. Those outputs can contain financial and personal information. This preparation does not require sending files to an accountant or posting records to an accounting service. Document changes, context responses, saved memories, accounting exports, and sharing require the user's authorization and any applicable Receiptor approval flow.
 
 ## Support and policy links
 

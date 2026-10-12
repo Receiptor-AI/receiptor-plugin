@@ -8,6 +8,11 @@
     "url": "https://receiptor.ai"
   },
   "homepage": "https://docs.receiptor.ai/introduction",
+  "icon": "./assets/logo.svg",
+  "documentationUrl": "https://docs.receiptor.ai/api/mcp/introduction",
+  "supportUrl": "https://help.receiptor.ai",
+  "privacyPolicyUrl": "https://receiptor.ai/privacy",
+  "termsOfServiceUrl": "https://receiptor.ai/terms",
   "repository": "https://github.com/Receiptor-AI/receiptor-plugin",
   "license": "MIT",
   "keywords": [
