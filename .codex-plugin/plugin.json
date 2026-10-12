@@ -95,7 +95,9 @@
               "prompt": "File my company tax return with the tax authority and certify that every expense is deductible."
             }
           ]
-        }
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not offer purchases or process payments. A Receiptor AI account is required. No subscription is required to get started, run retroactive extractions, or work with saved documents. A Receiptor AI subscription is required for ongoing document collection."
       },
       "publication": {
         "countries": [],

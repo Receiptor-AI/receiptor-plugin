@@ -40,6 +40,8 @@ The monthly pack is currently in testing. Creating its files requires an assista
 
 > Show this month's document totals by supplier, with each currency separate.
 
+A Receiptor AI account is required. You can get started without a subscription, run retroactive extractions, and work with saved documents. Ongoing document collection requires a Receiptor AI subscription.
+
 Preparing a pack reads your existing records. Changes to records, saved business guidance, accounting exports, and sharing require your permission and any approvals Receiptor requires.
 
 ## Your data
