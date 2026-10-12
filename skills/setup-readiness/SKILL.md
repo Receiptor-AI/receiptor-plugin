@@ -11,7 +11,7 @@ Use this skill before operational bookkeeping work when the question is "is this
 
 1. Call `workspace_get_context` to confirm the authorized workspace.
 2. If the workspace is wrong or missing, use `workspaces_list` and then `workspace_switch` to move the current MCP session to the target workspace.
-3. Call `integrations_list` with `category: "email"` to review intake sources.
+3. Call `sources_email_list` to review intake sources, connection health and monitoring status.
 4. Call `integrations_list` with `category: "accounting"` to review downstream export targets.
 5. Call `rules_list` to see whether automation rules exist.
 6. Call `exports_list` to understand whether export activity has happened at all.
@@ -28,12 +28,14 @@ Use this skill before operational bookkeeping work when the question is "is this
 ## Interpretation
 
 - If `workspace_get_context` fails or returns the wrong workspace, fix authorization first.
-- If `integrations_list` for email returns nothing useful, the workspace is not ready for automatic intake.
+- If `sources_email_list` returns no monitored connected sources, automatic email intake has a setup gap; uploads or other sources may still work.
 - If accounting integrations are absent, intake may still work, but downstream export workflows are not ready.
 - If rules and exports are both empty, the workspace may still be at an early setup stage even if sources are connected.
 
 ## Limits
 
 This skill is good for operational readiness, not every product-level configuration detail.
+
+Current connection and monitoring state does not prove historical coverage for a reporting period. Export history alone does not prove a current successful posting.
 
 If the user asks about state that is not surfaced through MCP yet, say so explicitly and avoid guessing.

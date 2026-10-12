@@ -15,15 +15,15 @@ Use `documents_count` for aggregate reporting.
 
 ## Good Uses
 
-- total spend across all matching documents
-- grouped spend by merchant
-- grouped spend by category
-- date-bounded spend analysis for a reporting period
+- document counts and recorded totals across all matching documents
+- grouped document totals by merchant or category
+- date-bounded document analysis for a reporting period
 - focused analysis for one merchant, category, or document type
 
 ## Reporting Guidance
 
-- Prefer aggregate outputs from `documents_count` over hand-built math from search results.
+- Use typed `where.conditions` for date/entity/document filters. Use aggregate counts to check the full population; do not extrapolate a search sample.
+- Totals count documents, including both sides of linked invoice/receipt pairs. Establish a defensible purchase population before describing totals as spending or expenses.
 - State the grouping field you used.
-- Call out currency handling when totals may reflect preferred-currency conversion.
+- `documents_count` totals may be converted to the authenticated user's currency even when grouped by original currency. Preserve the returned currency label. For native-currency totals, paginate the complete register and calculate separately by currency with code; never add currencies.
 - If a grouped result needs investigation, follow up with `documents_search` rather than speculating about what is inside the group.

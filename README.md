@@ -30,6 +30,9 @@ codex plugin marketplace add Receiptor-AI/receiptor-plugin
 - `skills/receipt-intake/`: search and inspect receipts and invoices
 - `skills/categorization-review/`: preview and approve bulk categorization changes
 - `skills/spend-analysis/`: aggregate spend totals and grouped breakdowns
+- `skills/month-end-document-pack/`: prepare a draft accountant-review workbook, available originals, file manifest and handoff note
+
+The month-end skill is prepared for private testing. Its complete review workflow requires the backend release with filter-only pagination, canonical review filtering/detail, null-date filters and `documents_respond_review`. Check the connected server's schemas before testing; these source changes do not themselves deploy MCP. Pack preparation is read-only by default. Test the installed plugin on two representative periods before public promotion.
 
 ## Design
 
@@ -47,6 +50,7 @@ The bundled MCP config is:
 {
   "mcpServers": {
     "receiptor": {
+      "type": "http",
       "url": "https://mcp.receiptor.ai"
     }
   }

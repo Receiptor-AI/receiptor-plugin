@@ -7,6 +7,8 @@ description: Review and fix categorization quality across receipts and invoices 
 
 Use `documents_bulk_edit` for controlled bulk cleanup.
 
+For existing categorization questions, first use `context_requests_list` (paginate the queue) or `context_requests_group` (a returned subset), then `context_requests_resolve` or `context_requests_bulk_resolve` for selected requests. Submit explicit user context, distinguish proposals from confirmed decisions, and follow the same authorization and approval rules as other mutations. `provide_context` may queue recategorization; re-read the document before reporting success. Save lasting guidance with `saveAsMemory` or `memories_save` only when authorized, and do not turn one document's explanation into a workspace-wide rule.
+
 ## Required Workflow
 
 1. Preview first with `documents_bulk_edit` in dry-run mode.
