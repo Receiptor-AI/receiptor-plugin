@@ -5,7 +5,7 @@ description: Check expense categories and supplier names on receipts and invoice
 
 # Categorization Review
 
-Use `documents_bulk_edit` for controlled bulk cleanup.
+Use `documents_bulk-edit` for controlled bulk cleanup.
 
 ## Before starting
 
@@ -15,7 +15,7 @@ For existing categorization questions, first use `context_requests_list` (pagina
 
 ## Required Workflow
 
-1. Preview first with `documents_bulk_edit` in dry-run mode.
+1. Preview first with `documents_bulk-edit` in dry-run mode.
 2. Review the preview payload with the user:
    - total matching documents
    - sample affected documents

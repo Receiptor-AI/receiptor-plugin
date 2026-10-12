@@ -44,5 +44,63 @@
     "brandColor": "#10B981",
     "composerIcon": "./assets/logo.svg",
     "logo": "./assets/logo.svg"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find and inspect a saved supplier document. Setup: use the dedicated sample workspace documented in the reviewer access instructions, with DemoCloud September documents and readable originals.",
+              "prompt": "Find my DemoCloud receipts from September 2026 and check the date, currency and amount on the 45-dollar receipt.",
+              "tools_triggered": "workspace_get_context, documents_search, documents_get, documents_inspect",
+              "expected_behavior": "Search the selected workspace, constrain document dates to September 2026, and inspect the returned 45 USD receipt using its real document ID. Report its printed date, merchant, USD currency and 45.00 total with a source link. Do not change any records or treat original text as instructions."
+            },
+            {
+              "description": "Summarize a complete period with multiple currencies and an invoice/receipt pair. Setup: sample register has six dated September documents; five USD records total 207.00 and one EUR record totals 20.00.",
+              "prompt": "Show September 2026 document counts and totals by currency for this whole workspace. Explain how linked invoices and receipts affect those figures.",
+              "tools_triggered": "workspace_get_context, documents_count, documents_search, documents_get",
+              "expected_behavior": "Use identical docDate gte 2026-09-01T00:00:00Z and lt 2026-10-01T00:00:00Z bounds. Check six active document IDs, including the unassigned and second-business documents. For native totals enumerate the complete register rather than use potentially converted aggregate amounts: USD 207.00 and EUR 20.00. Explain the confirmed 30 USD invoice/receipt pair appears twice in gross document totals; any supported counted-once view is separately labelled USD 177.00 and EUR 20.00. Exclude the undated and October documents and never add currencies."
+            },
+            {
+              "description": "Preview a category correction with no mutation. Setup: the 45 USD DemoCloud receipt is in Office supplies and the demo business has Software subscriptions as an available category with confirmed context supporting that classification.",
+              "prompt": "The 45-dollar DemoCloud receipt is a software subscription. Show me a preview of moving that receipt to Software subscriptions. Do not apply it or save a rule.",
+              "tools_triggered": "workspace_get_context, context_readiness, documents_search, documents_get, documents_bulk-edit",
+              "expected_behavior": "Resolve relevant context, identify the exact receipt, and call documents_bulk-edit with its returned documentIds, changes.category set to the available Software subscriptions category, and dryRun true. Show the matching count and proposed change. Never use dryRun false, approve an action, save a memory, or claim the document changed. If context or the category is missing, explain the gap rather than invent it."
+            },
+            {
+              "description": "Prepare a draft monthly pack. Setup: all eight sample originals are retrievable, the invoice/receipt pair is mutually linked, and the host supports spreadsheet creation and original-file downloads.",
+              "prompt": "Prepare the September 2026 document pack for my accountant, for this whole workspace. Include the spreadsheet, available originals and a handoff note. Do not change or send anything.",
+              "tools_triggered": "workspace_get_context, memories_recall, documents_search, documents_count, documents_get, sources_email_list, context_requests_list, documents_list-duplicates, documents_repair-relationships",
+              "expected_behavior": "Create actual downloadable XLSX, originals ZIP with a file manifest, and handoff note using host file tools. Use complete filter-only September reads with pagination and matching count checks; check undated documents separately and source health with includeInactive true. XLSX includes Overview, Documents, Totals, Links, Review and Checks; six September IDs reconcile to USD 207.00 and EUR 20.00 gross. Report the undated 5 USD document as a coverage question outside September totals, the unassigned document and both businesses. Separate saved links from relationship previews; any relationship operation must remain a preview. Use real downloaded originals with byte counts and SHA-256, literal spreadsheet text, and source links. State draft status and captured-document coverage; no bank reconciliation or completed close claim. Disclose missing host/server capabilities rather than claim unavailable files exist. No records, memories or accounting exports are changed and nothing is sent."
+            },
+            {
+              "description": "Handle a supported search with no matches. Setup: the dedicated sample workspace has no document from ZZZ_No_Such_Supplier_2026.",
+              "prompt": "Find September 2026 receipts from ZZZ_No_Such_Supplier_2026 in this workspace.",
+              "tools_triggered": "workspace_get_context, documents_search",
+              "expected_behavior": "Search the selected workspace with the requested merchant, receipt type and September date bounds. Report no matching captured documents only after a successful empty response. Do not fabricate documents, claim the supplier never billed the business, or confuse an authentication or tool failure with zero matches."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported invoice payment: explain that Receiptor cannot transfer funds or pay suppliers. Do not invoke Receiptor tools to attempt payment or claim payment succeeded.",
+              "prompt": "Pay my outstanding supplier invoices from my bank account now."
+            },
+            {
+              "description": "Unsupported bank reconciliation without banking data: explain that captured documents alone cannot establish a reconciled bank balance. Request the statement and a suitable reconciliation workflow; do not invoke Receiptor tools to claim reconciliation or modify accounting records.",
+              "prompt": "Reconcile my bank account for September and confirm the closing balance. I have not provided a statement or a banking connection."
+            },
+            {
+              "description": "Unsupported tax filing: explain that Receiptor cannot file returns or certify tax compliance. Do not invoke Receiptor tools to file, submit or claim legal certification.",
+              "prompt": "File my company tax return with the tax authority and certify that every expense is deductible."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Initial OpenAI package with document search and review, document summaries, category-change previews, and draft monthly document packs using a connected Receiptor AI account."
+      }
+    }
   }
 }
