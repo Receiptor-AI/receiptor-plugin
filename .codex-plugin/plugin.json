@@ -24,7 +24,7 @@
   "mcpServers": "./mcp.json",
   "interface": {
     "displayName": "Receiptor AI",
-    "shortDescription": "Find receipts, check expense categories, and prepare monthly document packs.",
+    "shortDescription": "Receipts ready for review",
     "longDescription": "Use the receipts and invoices in your Receiptor AI account to check document details, review expense categories, and see totals by supplier or month. Prepare a draft pack with a spreadsheet, available original files, and a note explaining what needs your accountant's review.",
     "developerName": "Receiptor AI",
     "category": "Productivity",
@@ -33,6 +33,7 @@
       "Write"
     ],
     "websiteURL": "https://receiptor.ai",
+    "supportURL": "https://help.receiptor.ai",
     "privacyPolicyURL": "https://receiptor.ai/privacy",
     "termsOfServiceURL": "https://receiptor.ai/terms",
     "defaultPrompt": [
