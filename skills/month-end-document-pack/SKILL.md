@@ -11,6 +11,8 @@ Produce a traceable pack from captured documents. Receiptor supplies saved recor
 
 Read [workspace checks](../../references/workspace-checks.md) and apply the access, scope, month-end and collection-coverage checks. Check categorization context when interpreting classification; keep supported draft preparation available despite unrelated setup gaps.
 
+Read the installed package's [release information](../../references/release-info.json) when available. Record its version, source commit, build kind and dirty-source state in the workbook Overview and handoff note. Use the installed copy, not a current GitHub branch or another host's package. A source checkout can have an unknown commit; a dirty preview is not fully identified by its commit. If release metadata is unavailable, report those fields as unknown and continue preparation. Do not guess a version from these instructions or treat the package version as the MCP server version.
+
 ## Establish the scope
 
 - Confirm the workspace with `workspace_get_context`; use `workspaces_list` and `workspace_switch` if needed. Confirm the month and any business/entity restriction. Own businesses are entities; merchants are counterparties.

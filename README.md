@@ -69,6 +69,8 @@ The plugin contains instructions and connection settings. It has no bundled prog
 
 Source repository: https://github.com/Receiptor-AI/receiptor-plugin
 
+Release/version commands and platform verification: [release guide](https://github.com/Receiptor-AI/receiptor-plugin/blob/main/RELEASING.md). Download tagged host packages from [GitHub Releases](https://github.com/Receiptor-AI/receiptor-plugin/releases/latest). `VERSION` is shared across the Claude, Codex and Cursor source manifests; built packages include their source revision in `references/release-info.json`.
+
 Test locally in Claude Code:
 
 ```bash

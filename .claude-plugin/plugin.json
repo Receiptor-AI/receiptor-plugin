@@ -1,7 +1,7 @@
 {
   "name": "receiptor",
   "displayName": "Receiptor AI",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Get your receipts and invoices ready for your accountant. Find documents, check expense categories, and prepare a draft monthly pack for review.",
   "author": {
     "name": "Receiptor AI",
