@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Use a PNG listing icon for Anthropic's plugin directory, which does not accept SVG icons.
+- Publish the Claude package to a dedicated branch that contains only the plugin's own files.
+
 ## 0.1.1
 
 - Record the plugin version and available source revision in monthly document packs.

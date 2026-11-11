@@ -43,6 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    # Releases update a shared branch; never let two tag runs race on it.
+    concurrency:
+      group: plugin-release
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
         with:
@@ -55,6 +59,42 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         run: test "$RELEASE_TAG" = "v$(cat VERSION)"
       - run: python3 scripts/release.py build
+      # Anthropic's directory installs a Git folder, and refuses scripts from
+      # unverified organizations, so it tracks a branch holding exactly the
+      # contents of receiptor-claude.zip. Idempotent, so a rerun can finish a release.
+      - name: Publish the Claude package to the directory branch
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+          DIRECTORY_BRANCH: claude-directory
+        run: |
+          set -euo pipefail
+          tree="$RUNNER_TEMP/claude-directory"
+          package="$RUNNER_TEMP/claude-package"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin "$DIRECTORY_BRANCH" >/dev/null; then
+            git fetch --no-tags origin "$DIRECTORY_BRANCH"
+            git worktree add -B "$DIRECTORY_BRANCH" "$tree" FETCH_HEAD
+          else
+            git worktree add --orphan -b "$DIRECTORY_BRANCH" "$tree"
+          fi
+          version="$(cat VERSION)"
+          if [ -f "$tree/VERSION" ]; then
+            published="$(cat "$tree/VERSION")"
+            newest="$(printf '%s\n%s\n' "$published" "$version" | sort -V | tail -n 1)"
+            if [ "$newest" != "$version" ]; then
+              echo "::error::$DIRECTORY_BRANCH already publishes $published; refusing to go back to $version"
+              exit 1
+            fi
+          fi
+          git -C "$tree" rm -rq --ignore-unmatch .
+          unzip -q dist/receiptor-claude.zip -d "$package"
+          cp -R "$package/receiptor/." "$tree/"
+          git -C "$tree" add -A
+          if ! git -C "$tree" diff --cached --quiet; then
+            git -C "$tree" commit -q -m "Receiptor $RELEASE_TAG" -m "Contents of receiptor-claude.zip built from $GITHUB_SHA."
+          fi
+          git -C "$tree" push origin "HEAD:refs/heads/$DIRECTORY_BRANCH"
       - name: Publish host archives from this tagged commit
         env:
           GH_TOKEN: ${{ github.token }}

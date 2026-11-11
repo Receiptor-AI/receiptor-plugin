@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 import shutil
+import struct
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -94,6 +95,43 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(len(skills[0]), 4)
         self.assertEqual(skills[0], skills[1])
         self.assertEqual(skills[1], skills[2])
+
+    def test_claude_archive_meets_directory_file_rules(self):
+        # Anthropic's directory refuses scripts, programs and other file types from
+        # organizations it has not verified. The release workflow publishes this
+        # archive's contents to the branch the directory tracks, so it must stay
+        # within the accepted types: Markdown, text, JSON, YAML or raster images,
+        # plus the license, VERSION and the declared icon as UTF-8 text.
+        allowed_suffixes = {".md", ".txt", ".json", ".yaml", ".yml", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
+        images = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
+        icon = release.read_json(self.root / release.MANIFESTS["claude"])["icon"].removeprefix("./")
+        with patch.object(release, "git", side_effect=self.mock_git):
+            release.build(self.root, self.output)
+        with zipfile.ZipFile(self.output / "receiptor-claude.zip") as archive:
+            for name in archive.namelist():
+                path = name.removeprefix("receiptor/")
+                suffix = Path(path).suffix.lower()
+                with self.subTest(path=path):
+                    self.assertTrue(suffix in allowed_suffixes or path in {"LICENSE", "VERSION", icon})
+                    if suffix not in images:
+                        content = archive.read(name)
+                        content.decode("utf-8")
+                        self.assertNotIn(b"\0", content)
+                        self.assertFalse(content.startswith(b"#!"))
+
+    def test_claude_icon_meets_directory_listing_rules(self):
+        # The directory's listing icon must be a square PNG or JPEG, 512 to 2048 px
+        # on each side and under 2 MB; it does not accept SVG or WebP. We ship PNG.
+        icon = release.read_json(self.root / release.MANIFESTS["claude"])["icon"].removeprefix("./")
+        with patch.object(release, "git", side_effect=self.mock_git):
+            release.build(self.root, self.output)
+        with zipfile.ZipFile(self.output / "receiptor-claude.zip") as archive:
+            content = archive.read("receiptor/" + icon)
+        self.assertTrue(content.startswith(b"\x89PNG\r\n\x1a\n"), f"{icon} is not a PNG")
+        width, height = struct.unpack(">II", content[16:24])
+        self.assertEqual(width, height)
+        self.assertTrue(512 <= width <= 2048)
+        self.assertLess(len(content), 2 * 1024 * 1024)
 
     def test_preview_records_dirty_state_and_has_distinct_name(self):
         with patch.object(release, "git", side_effect=lambda root, *args: "dirty" if args[0] == "status" else "a" * 40):

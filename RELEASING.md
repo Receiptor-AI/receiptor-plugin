@@ -35,6 +35,8 @@ https://github.com/Receiptor-AI/receiptor-plugin/releases/latest/download/receip
 
 Upload the corresponding archive to the existing listing, keeping its identity. Claude/Grok/Cursor Git-based submissions must reference the same release tag/commit where the portal supports it. Recheck the revision actually scanned or installed; a listing following main can move ahead of a release. Marketplace review may lag GitHub releases. Never change a recorded approval/version just because source was bumped.
 
+Anthropic's plugin directory installs a folder from a Git branch, not an uploaded archive, and refuses scripts and other unaccepted file types from organizations it has not verified, so it cannot track `main`, which holds `scripts/`. The tag workflow therefore also commits the exact contents of `receiptor-claude.zip` to the `claude-directory` branch, one commit per release, and refuses to move that branch to an older version. In the directory portal, track branch `claude-directory` with an empty plugin path. Only the release workflow writes to that branch; protect it in repository settings so nobody pushes to it by hand. `scripts/test_release.py` checks that the Claude archive stays within the directory's accepted file types.
+
 Record these fields for each release in the tracking issue, with evidence URLs and dates:
 
 | Host | Prepared version + commit | Submitted/scanned version + commit | Approved version | Installed/tested version + commit |

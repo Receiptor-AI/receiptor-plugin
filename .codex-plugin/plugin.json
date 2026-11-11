@@ -1,6 +1,6 @@
 {
   "name": "receiptor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Get your receipts and invoices ready for your accountant. Find documents, check expense categories, and prepare a draft monthly pack for review.",
   "author": {
     "name": "Receiptor AI",
@@ -101,7 +101,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "- Record the plugin version and available source revision in monthly document packs.\n- Build Claude, OpenAI and Cursor packages from the same tagged source, with separate preview downloads.\n- Keep host versions aligned and reject shipped changes that reuse an existing version."
+        "release_notes": "- Use a PNG listing icon for Anthropic's plugin directory, which does not accept SVG icons.\n- Publish the Claude package to a dedicated branch that contains only the plugin's own files."
       }
     }
   }
