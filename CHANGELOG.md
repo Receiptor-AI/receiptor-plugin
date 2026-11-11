@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- Resubmit the Claude package to Anthropic's plugin directory from its dedicated branch. Skills and the Receiptor connection are unchanged.
+
 ## 0.1.2
 
 - Use a PNG listing icon for Anthropic's plugin directory, which does not accept SVG icons.
