@@ -2,7 +2,7 @@
 
 ## 0.1.3
 
-- Resubmit the Claude package to Anthropic's plugin directory from its dedicated branch. Skills and the Receiptor connection are unchanged.
+- Leave the VERSION file out of the Claude package, because Anthropic's plugin directory refuses files without an accepted type. The plugin manifest still carries the version. Skills and the Receiptor connection are unchanged.
 
 ## 0.1.2
 

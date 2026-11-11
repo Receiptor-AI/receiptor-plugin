@@ -100,8 +100,9 @@ class ReleaseTests(unittest.TestCase):
         # Anthropic's directory refuses scripts, programs and other file types from
         # organizations it has not verified. The release workflow publishes this
         # archive's contents to the branch the directory tracks, so it must stay
-        # within the accepted types: Markdown, text, JSON, YAML or raster images,
-        # plus the license, VERSION and the declared icon as UTF-8 text.
+        # within the accepted types: Markdown, text, JSON, YAML or raster images.
+        # Of files without such a type, only the license, a readme, .gitignore and
+        # the declared icon are accepted; it refused 0.1.2 for shipping VERSION.
         allowed_suffixes = {".md", ".txt", ".json", ".yaml", ".yml", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
         images = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
         icon = release.read_json(self.root / release.MANIFESTS["claude"])["icon"].removeprefix("./")
@@ -112,7 +113,7 @@ class ReleaseTests(unittest.TestCase):
                 path = name.removeprefix("receiptor/")
                 suffix = Path(path).suffix.lower()
                 with self.subTest(path=path):
-                    self.assertTrue(suffix in allowed_suffixes or path in {"LICENSE", "VERSION", icon})
+                    self.assertTrue(suffix in allowed_suffixes or path in {"LICENSE", icon})
                     if suffix not in images:
                         content = archive.read(name)
                         content.decode("utf-8")

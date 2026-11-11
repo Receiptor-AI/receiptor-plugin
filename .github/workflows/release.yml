@@ -79,8 +79,10 @@ jobs:
             git worktree add --orphan -b "$DIRECTORY_BRANCH" "$tree"
           fi
           version="$(cat VERSION)"
-          if [ -f "$tree/VERSION" ]; then
-            published="$(cat "$tree/VERSION")"
+          # The directory refuses VERSION, so the branch carries the version only in its manifest.
+          manifest="$tree/.claude-plugin/plugin.json"
+          if [ -f "$manifest" ]; then
+            published="$(python3 -c 'import json, sys; print(json.load(open(sys.argv[1]))["version"])' "$manifest")"
             newest="$(printf '%s\n%s\n' "$published" "$version" | sort -V | tail -n 1)"
             if [ "$newest" != "$version" ]; then
               echo "::error::$DIRECTORY_BRANCH already publishes $published; refusing to go back to $version"

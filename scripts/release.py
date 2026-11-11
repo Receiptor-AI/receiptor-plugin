@@ -132,9 +132,14 @@ def package_files(root, host, info):
         path = MANIFESTS[host]
         files[path] = (root / path).read_bytes()
         if host == "claude":
-            # Anthropic's directory refuses SVG files from unverified organizations;
-            # the Claude listing uses the PNG its manifest declares instead.
-            files = {name: content for name, content in files.items() if not name.endswith(".svg")}
+            # Anthropic's directory refuses SVG and extensionless files such as VERSION
+            # from unverified organizations. The Claude listing uses the PNG its
+            # manifest declares, and the manifest already carries the version.
+            files = {
+                name: content
+                for name, content in files.items()
+                if name != "VERSION" and not name.endswith(".svg")
+            }
         if host == "cursor":
             for path in sorted((root / "rules").rglob("*.mdc")):
                 if path.is_symlink():
